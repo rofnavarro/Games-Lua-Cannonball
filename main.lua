@@ -37,6 +37,8 @@ function	love.load()
 
 	player1 = Cannon(1)
 	player2 = Cannon(2)
+	
+	clouds = Clouds()
 end
 
 function	love.resize(w, h)
@@ -45,6 +47,7 @@ end
 
 function	love.keypressed(key)
     love.keyboard.keysPressed[key] = true 
+
 	if key == 'escape' then
 		love.event.quit()
 	elseif key == 'p' then
@@ -64,6 +67,9 @@ end
 function	love.update(dt)
 	player1:update(dt, 1)
 	player2:update(dt, 2)
+
+	clouds:update(dt)
+
 	love.keyboard.keysPressed = {}
 end
 
@@ -72,9 +78,19 @@ function	love.draw()
 	push:start()
 
 	love.graphics.clear(30 / 255, 139 / 255, 195 / 255, 1)
+	love.graphics.draw(BACKGROUND, 0, 0, 0, 1.4, 1.4)
+
+	clouds:render()
 
 	player1:render(1)
 	player2:render(2)
 
+	displayFPS()
+
 	push:finish()
+end
+
+function	displayFPS()
+	love.graphics.setColor(0 / 255, 255 / 255, 0 / 255, 255 / 255)
+	love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 20, 10)
 end

@@ -9,8 +9,11 @@ push = require 'utils/push'
 --	global constants
 require	'utils/constants'
 
---	state machine
-require	'class/StateMachine'
-
 --	cannon
 require 'class/Cannon'
+
+--	clouds
+require	'class/Clouds'
+
+--	state machine
+require	'class/StateMachine'
