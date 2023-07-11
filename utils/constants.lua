@@ -7,3 +7,5 @@ VIRTUAL_HEIGHT = 288
 PAUSE = false
 
 BACKGROUND = love.graphics.newImage('img/background.png')
+
+GRAVITY = 9.80665
