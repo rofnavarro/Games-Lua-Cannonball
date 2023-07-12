@@ -17,3 +17,6 @@ require	'class/Clouds'
 
 --	state machine
 require	'class/StateMachine'
+
+--	wind
+require	'class/Wind'

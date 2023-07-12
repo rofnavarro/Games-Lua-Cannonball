@@ -39,6 +39,7 @@ function	love.load()
 	player2 = Cannon(2)
 	
 	clouds = Clouds()
+	wind = Wind()
 end
 
 function	love.resize(w, h)
@@ -69,6 +70,7 @@ function	love.update(dt)
 	player2:update(dt, 2)
 
 	clouds:update(dt)
+	wind:update(dt)
 
 	love.keyboard.keysPressed = {}
 end
@@ -81,9 +83,11 @@ function	love.draw()
 	love.graphics.draw(BACKGROUND, 0, 0, 0, 1.4, 1.4)
 
 	clouds:render()
-
+	
 	player1:render(1)
 	player2:render(2)
+
+	wind:render()
 
 	displayFPS()
 
