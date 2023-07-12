@@ -69,9 +69,6 @@ function	love.update(dt)
 	player1:update(dt, 1)
 	player2:update(dt, 2)
 
-	clouds:update(dt)
-	wind:update(dt)
-
 	love.keyboard.keysPressed = {}
 end
 
@@ -95,6 +92,6 @@ function	love.draw()
 end
 
 function	displayFPS()
-	love.graphics.setColor(0 / 255, 255 / 255, 0 / 255, 255 / 255)
+	love.graphics.setColor(0 / 255, 0 / 255, 255 / 255, 255 / 255)
 	love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 20, 10)
 end

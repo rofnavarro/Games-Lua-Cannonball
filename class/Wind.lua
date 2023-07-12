@@ -1,25 +1,34 @@
 Wind = Class{}
 
-WIND = love.graphics.newImage('img/wind_arrow.png')
+WIND_LEFT = love.graphics.newImage('img/arrow_left.png')
+WIND_RIGHT = love.graphics.newImage('img/arrow_right.png')
 
 function	Wind:init()
-	self.x = VIRTUAL_WIDTH / 2 - (WIND:getWidth() / 2 * 0.6)
+	self.x = VIRTUAL_WIDTH / 2 - (WIND_LEFT:getWidth() / 2 * 0.6)
 	self.y = 10
-	self.dx = math.random(2) == 1 and -1 or 1
-	self.dy = math.random(-0.5, 0.5)
-	self.width = WIND:getWidth()
-	self.height = WIND:getHeight()
-	self.power = 20
-	self.angle = 0 - math.pi
+	self.width = WIND_LEFT:getWidth()
+	self.height = WIND_LEFT:getHeight()
+	self.power = math.random(5, 60)
+	self.direction = math.random(1, 2)
 end
 
-function	Wind:update(dt, direction)
-	love.graphics.draw(WIND, self.x, self.y, math.pi, 0.6, 0.6)
+function	Wind:update(dt)
+	if (self.direction == 1) then
+		love.graphics.draw(WIND_LEFT, self.x, self.y, 0, 0.6, 0.6)
+	else
+		love.graphics.draw(WIND_RIGHT, self.x, self.y, 0, 0.6, 0.6)
+	end
+	self.power = math.random(5, 60)
+	self.direction = math.random(1, 2)
 end
 
 function	Wind:render()
-	love.graphics.draw(WIND, self.x, self.y, self.angle, 0.6, 0.6)
+	if (self.direction == 1) then
+		love.graphics.draw(WIND_LEFT, self.x, self.y, 0, 0.6, 0.6)
+	else
+		love.graphics.draw(WIND_RIGHT, self.x, self.y, 0, 0.6, 0.6)
+	end
 	love.graphics.setColor(0 / 255, 0 / 255, 0 / 255, 1)
 	love.graphics.setFont(smallfont)
-	love.graphics.print(tostring(self.power), VIRTUAL_WIDTH / 2 - 4, (self.y + self.height))
+	love.graphics.print(tostring(self.power), VIRTUAL_WIDTH / 2 - 4, (self.y + self.height - 10))
 end
