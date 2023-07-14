@@ -68,6 +68,12 @@ end
 function	love.update(dt)
 	player1:update(dt, 1)
 	player2:update(dt, 2)
+	turn = turn + 1
+
+	if turn == 3 then
+		wind:update(dt)
+		turn = 0
+	end
 
 	love.keyboard.keysPressed = {}
 end
